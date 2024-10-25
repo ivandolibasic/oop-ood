@@ -1,0 +1,14 @@
+/home/ivan/RiderProjects/console/oop/bin/Debug/net8.0/oop
+/home/ivan/RiderProjects/console/oop/bin/Debug/net8.0/oop.deps.json
+/home/ivan/RiderProjects/console/oop/bin/Debug/net8.0/oop.runtimeconfig.json
+/home/ivan/RiderProjects/console/oop/bin/Debug/net8.0/oop.dll
+/home/ivan/RiderProjects/console/oop/bin/Debug/net8.0/oop.pdb
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.GeneratedMSBuildEditorConfig.editorconfig
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.AssemblyInfoInputs.cache
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.AssemblyInfo.cs
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.csproj.CoreCompileInputs.cache
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.dll
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/refint/oop.dll
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.pdb
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.genruntimeconfig.cache
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/ref/oop.dll
