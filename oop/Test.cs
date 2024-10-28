@@ -120,8 +120,16 @@ public static class Test
     
     public static void RunVector3DTask()
     {
-        var generator = new Random();
-        Vector3D randomVector = generator.NextVector3D(5, 10);
-        Console.WriteLine(randomVector.ToString());
+        var nulVector = new Vector3D();
+        Console.WriteLine(nulVector.ToString());
+        var vector1 = nulVector;
+        vector1.I = 2.7;
+        vector1.J = 7.1;
+        vector1.K = -5.4;
+        Console.WriteLine(vector1.ToString());
+        var vector2 = new Vector3D(0.3, 6.2, 1.2);
+        nulVector = vector1 + vector2;
+        Console.WriteLine(nulVector.ToString());
+        Console.WriteLine(vector2.Modulus());
     }
 }

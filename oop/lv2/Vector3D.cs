@@ -6,9 +6,9 @@ public class Vector3D
     private double j;
     private double k;
 
-    public double I { get => i; }
-    public double J { get => j; }
-    public double K { get => k; }
+    public double I { get => i; set => i = value; }
+    public double J { get => j; set => j = value; }
+    public double K { get => k; set => k = value; }
 
     public Vector3D() : this(0, 0, 0) { }
 
@@ -28,5 +28,10 @@ public class Vector3D
     public static Vector3D operator -(Vector3D vector1, Vector3D vector2)
     {
         return new Vector3D(vector1.i - vector2.i, vector1.j - vector2.j, vector1.k - vector2.k);
+    }
+
+    public double Modulus()
+    {
+        return Math.Sqrt(i * i + j * j + k * k);
     }
 }
