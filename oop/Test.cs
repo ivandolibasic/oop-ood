@@ -1,3 +1,4 @@
+using oop.lv2;
 using oop.pr;
 
 namespace oop;
@@ -80,8 +81,47 @@ public static class Test
     
     public static void StringFormatter(string text) // The ways of formatting string
     {
-        Console.WriteLine("Some text " + text); // concatination
+        Console.WriteLine("Some text " + text); // concatenation
         Console.WriteLine($"Some text {text}"); // interpolation
         Console.WriteLine("Some text {0}", text); // composition (composite formatting)
+    }
+    
+    public static void RunContactTask()
+    {
+        Console.Write("Define a number of contacts stored in the address book: ");
+        int contactCount = int.Parse(Console.ReadLine());
+        Contact[] contacts = new Contact[contactCount];
+        for (int i = 0; i < contacts.Length; i++)
+        {
+            Console.WriteLine("Enter contact details:");
+            Console.Write("Enter first name: ");
+            string? firstName =  Console.ReadLine();
+            Console.Write("Enter last name: ");
+            string? lastName = Console.ReadLine();
+            Console.Write("Enter phone number: ");
+            string? phoneNumber = Console.ReadLine();
+            Console.Write("Enter email: ");
+            string? email = Console.ReadLine();
+            while (EmailHelper.CheckValidity(email) == false)
+            {
+                Console.Write("Invalid email. Please enter valid email: ");
+                email = Console.ReadLine();
+            }
+            contacts[i] = new Contact(firstName, lastName, phoneNumber, email);
+        }
+        Console.Write("Define a file name: ");
+        string? fileName = Console.ReadLine();
+        using StreamWriter writer = new StreamWriter(fileName);
+        foreach (var contact in contacts)
+        {
+            writer.WriteLine(contact.ToString());
+        }
+    }
+    
+    public static void RunVector3DTask()
+    {
+        var generator = new Random();
+        Vector3D randomVector = generator.NextVector3D(5, 10);
+        Console.WriteLine(randomVector.ToString());
     }
 }

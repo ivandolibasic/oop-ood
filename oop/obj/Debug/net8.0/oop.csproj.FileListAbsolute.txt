@@ -12,3 +12,4 @@
 /home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.pdb
 /home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.genruntimeconfig.cache
 /home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/ref/oop.dll
+/home/ivan/RiderProjects/console/oop/obj/Debug/net8.0/oop.sourcelink.json

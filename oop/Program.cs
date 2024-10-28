@@ -6,3 +6,5 @@ Console.Write(""); // Why this? Program 'oop.dll' does not contain a static 'Mai
 // Test.RunVideoTask();
 // Test.RunCounterTask();
 // Test.StringFormatter("bla bla");
+// Test.RunContactTask();
+// Test.RunVector3DTask();
