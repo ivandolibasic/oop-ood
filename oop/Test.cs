@@ -1,3 +1,4 @@
+using oop.lv1;
 using oop.lv2;
 using oop.pr;
 
@@ -85,6 +86,57 @@ public static class Test
         Console.WriteLine($"Some text {text}"); // interpolation
         Console.WriteLine("Some text {0}", text); // composition (composite formatting)
     }
+
+    public static void RunTrashCanTask()
+    {
+        var can = new TrashCan(100);
+        Console.WriteLine($"Capacity: {can.GetCapacity()}");
+        Console.WriteLine($"Current amount: {can.GetAmount()}");
+        Console.WriteLine("==================================");
+        can.Insert(95);
+        Console.WriteLine("Trash inserted (95).");
+        Console.WriteLine($"Current amount: {can.GetAmount()}");
+        Console.WriteLine($"Is it full: {can.IsFull()}");
+        Console.WriteLine("==================================");
+        can.Insert(10);
+        Console.WriteLine("Trash inserted (10).");
+        Console.WriteLine($"Current amount: {can.GetAmount()}");
+        Console.WriteLine($"Is it full: {can.IsFull()}");
+        Console.WriteLine($"How much is overflowing: {can.GetOverflowAmount()}");
+        Console.WriteLine("==================================");
+        can.Empty();
+        Console.WriteLine("Trash emptied.");
+        Console.WriteLine($"Current amount: {can.GetAmount()}");
+        Console.WriteLine($"Is it full: {can.IsFull()}");
+        Console.WriteLine($"How much is overflowing: {can.GetOverflowAmount()}");
+    }
+    
+    public static void RunComplexNumberTask()
+    {
+        Complex number1 = new();
+        Console.WriteLine(number1.ToString());
+        Complex number2 = new Complex(3, -4);
+        Console.WriteLine(number2.ToString());
+        Console.WriteLine(number2.Real);
+        Console.WriteLine(number2.Conjugate());
+        Console.WriteLine(number2.Modulus());
+        Complex number3 = new Complex(2, 5);
+        number2.Add(number3);
+        Console.WriteLine(number2.ToString());
+    }
+    
+    public static void RunWeatherTask()
+    {
+        Weather current = new Weather();
+        current.SetTemperature(24.12);
+        current.SetWindSpeed(3.5);
+        current.SetHumidity(0.56);
+        Console.WriteLine("Weather info:\n"
+        + "\ttemperature: " + current.GetTemperature() + "\n"
+        + "\thumidity: " + current.GetHumidity() + "\n"
+        + "\twind speed: " + current.GetWindSpeed() + "\n");
+        // Console.WriteLine("Feels like: " + current.CalculateFleesLikeTemperature());
+    }
     
     public static void RunContactTask()
     {
@@ -133,7 +185,7 @@ public static class Test
         Console.WriteLine(vector2.Modulus());
     }
 
-    public static void RunDiceTest()
+    public static void RunDiceTask()
     {
         YahtzeeChecker yahtzee = new(5);
         int numberOfRolls = 0;
