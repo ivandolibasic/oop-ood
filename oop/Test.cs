@@ -132,4 +132,17 @@ public static class Test
         Console.WriteLine(nulVector.ToString());
         Console.WriteLine(vector2.Modulus());
     }
+
+    public static void RunDiceTest()
+    {
+        YahtzeeChecker yahtzee = new(5);
+        int numberOfRolls = 0;
+        do
+        {
+            yahtzee.RollAll();
+            yahtzee.PrintRollResult();
+            numberOfRolls++;
+        } while (!yahtzee.IsYahtzee());
+        Console.WriteLine("Yahtzee achieved after {0} rolls.", numberOfRolls);
+    }
 }
