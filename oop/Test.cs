@@ -1,6 +1,11 @@
 using oop.lv1;
 using oop.lv2;
+using oop.lv3.zd1;
+using oop.lv3.zd2;
+using oop.lv3.zd3;
+using Sword = oop.lv3.zd3.Sword;
 using oop.pr;
+using oop.pr.ex;
 
 namespace oop;
 
@@ -196,5 +201,84 @@ public static class Test
             numberOfRolls++;
         } while (!yahtzee.IsYahtzee());
         Console.WriteLine("Yahtzee achieved after {0} rolls.", numberOfRolls);
+    }
+
+    public static void RunCharacterTask() // Association
+    {
+        Character theAshenOne = new("Ashen One", 100);
+        theAshenOne.TakeDamage(47);
+        Console.WriteLine(theAshenOne.ToString());
+        Shrine anorLondoBonfire = new();
+        anorLondoBonfire.Heal(theAshenOne);
+        Console.WriteLine(theAshenOne.ToString());
+    }
+
+    public static void RandomList() // Basic handling with List<T> type
+    {
+        int count;
+        Random generator = new();
+        List<int> numbers = new();
+
+        count = 10;
+        for (int i = 0; i < count; i++)
+        {
+            numbers.Add(generator.Next(1, 10));
+        }
+        
+        Console.WriteLine(string.Join(",", numbers));
+        foreach (var number in numbers)
+        {
+            Console.Write(number + "\t");
+        }
+        
+        
+        if (numbers.Count != 0)
+        {
+            Console.WriteLine();
+            int first = numbers[0];
+            Console.WriteLine($"The first number is {first}");
+        }
+        
+        numbers.RemoveAt(0);
+        Console.WriteLine(string.Join(",", numbers));
+
+        numbers.Remove(9);
+        Console.WriteLine(string.Join(",", numbers));
+
+        List<int> evenNumbers = new();
+        foreach (var number in numbers)
+        {
+            if (number % 2 == 0)
+                evenNumbers.Add(number);
+        }
+        Console.WriteLine(string.Join(",", evenNumbers));
+    }
+
+    public static void RunShoppingSystemTask()
+    {
+        var products = new List<Product>();
+        var basket = new Basket(products);
+        basket.Add(new Product(12, "T-Shirt"));
+        basket.Add(new Product(40, "Shoes"));
+        basket.Add(new Product(3, "Socks"));
+        Console.WriteLine($"Total price without discount is: {basket.CalculateTotalPrice()}");
+        var discount = new Discount(10);
+        basket.CalculateTotalPrice(discount);
+    }
+
+    public static void RunRobotTask()
+    {
+        var robot = new Robot(35.7, "Pero");
+        Console.WriteLine($"Robot's energy is: {robot.GetEnergy()}");
+    }
+
+    public static void RunItemTask()
+    {
+        var items = new List<Item>()
+        {
+            new Sword("Phase Blade", 10, 500, 1000),
+            new Shield("Monarch", 20, 1000, 250)
+        };
+        Console.WriteLine($"Average inventory loot is: {Inventory.GetAverageItemCost(items)}");
     }
 }

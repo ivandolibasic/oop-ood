@@ -1,7 +1,7 @@
 ﻿using oop;
 
 // Console.WriteLine($"Current directory: {Environment.CurrentDirectory}");
-Console.Write(""); // Why this? Program 'oop.dll' does not contain a static 'Main' method suitable for an entry point
+// Console.Write(""); // Why this? Program 'oop.dll' does not contain a static 'Main' method suitable for an entry point
 // Test.RunRectangleTask();
 // Test.RunCircleTask();
 // Test.RunVideoTask();
@@ -13,3 +13,8 @@ Console.Write(""); // Why this? Program 'oop.dll' does not contain a static 'Mai
 // Test.RunContactTask();
 // Test.RunVector3DTask();
 // Test.RunDiceTask();
+// Test.RunCharacterTask();
+// Test.RandomList();
+// Test.RunShoppingSystemTask();
+Test.RunRobotTask();
+// Test.RunItemTask();
