@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8VKbI5lcmtQ=",
+  "dgSpecHash": "Iq9tcHkueSs=",
   "success": true,
-  "projectFilePath": "/home/ivan/RiderProjects/console/oop/oop.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/ivan/oop-training/oop/oop.csproj",
+  "expectedPackageFiles": [
+    "/home/ivan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
   "logs": []
 }

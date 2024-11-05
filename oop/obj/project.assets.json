@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ivan/RiderProjects/console/oop/oop.csproj",
+      "projectUniqueName": "/home/ivan/oop-training/oop/oop.csproj",
       "projectName": "oop",
-      "projectPath": "/home/ivan/RiderProjects/console/oop/oop.csproj",
+      "projectPath": "/home/ivan/oop-training/oop/oop.csproj",
       "packagesPath": "/home/ivan/.nuget/packages/",
-      "outputPath": "/home/ivan/RiderProjects/console/oop/obj/",
+      "outputPath": "/home/ivan/oop-training/oop/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ivan/.nuget/NuGet/NuGet.Config"
@@ -54,12 +54,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.8, 8.0.8]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

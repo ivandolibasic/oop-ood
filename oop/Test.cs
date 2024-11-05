@@ -270,6 +270,12 @@ public static class Test
     {
         var robot = new Robot(35.7, "Pero");
         Console.WriteLine($"Robot's energy is: {robot.GetEnergy()}");
+        Console.WriteLine($"Robot will be shut down in {robot.CalculateSecondsToShutDown(2)} seconds");
+        Console.WriteLine($"Robot will be fully charged in {robot.CalculateSecondsToFullCharge(2)} seconds");
+        var lowEnergyRobot = new LowEnergyRobot(55.2, "Rope", 0.5);
+        Console.WriteLine($"Low energy robot's energy is: {lowEnergyRobot.GetEnergy()}");
+        Console.WriteLine($"Low energy robot will be shut down in {lowEnergyRobot.CalculateSecondsToShutDown(2)} seconds");
+        Console.WriteLine($"Low energy robot will be fully charged in {lowEnergyRobot.CalculateSecondsToFullCharge(2)} seconds");
     }
 
     public static void RunItemTask()
