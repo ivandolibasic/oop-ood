@@ -11,7 +11,6 @@ public class Vector3D
     public double K { get => k; set => k = value; }
 
     public Vector3D() : this(0, 0, 0) { }
-
     public Vector3D(double i, double j, double k)
     {
         this.i = i;

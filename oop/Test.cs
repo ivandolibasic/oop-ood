@@ -1,3 +1,6 @@
+using oop_design.rppoon.lv2;
+using oop.dotnet_docs;
+using oop.dotnet_docs.class_relationships;
 using oop.lv1;
 using oop.lv2;
 using oop.lv3.zd1;
@@ -6,6 +9,8 @@ using oop.lv3.zd3;
 using Sword = oop.lv3.zd3.Sword;
 using oop.pr;
 using oop.pr.ex;
+using Character = oop.pr.ex.Character;
+using Die = oop_design.rppoon.lv2.Die;
 
 namespace oop;
 
@@ -188,6 +193,10 @@ public static class Test
         nulVector = vector1 + vector2;
         Console.WriteLine(nulVector.ToString());
         Console.WriteLine(vector2.Modulus());
+        
+        var generator = new Random();
+        Vector3D randomVector = generator.NextVector3D(5, 10);
+        Console.WriteLine(randomVector.ToString());
     }
 
     public static void RunDiceTask()
@@ -286,5 +295,68 @@ public static class Test
             new Shield("Monarch", 20, 1000, 250)
         };
         Console.WriteLine($"Average inventory loot is: {Inventory.GetAverageItemCost(items)}");
+    }
+    
+    public static void DateAndTime()
+    {
+        TimeSpan duration = new TimeSpan(5, 2, 37, 44);
+        Console.WriteLine(duration);
+        DateTime date = DateTime.Now;
+        Console.WriteLine(date.ToString("dd/MM/yyyy"));
+        string dateString = "22/10/2024";
+        try
+        {
+            DateTime dateValue = DateTime.Parse(dateString);
+            Console.WriteLine("{0} is converted to {1}", dateString, dateValue);
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Unable to convert {0}", dateString);
+        }
+    }
+    
+    public static void ClassRelationships()
+    {
+        var dog = new Inheritance.Dog();
+        dog.Bark();
+        dog.Eat();
+        dog.Eat("Željko");
+    }
+    
+    public static void TestRandomCollection()
+    {
+        int count = 10;
+        const int UPPER_LIMIT = 10;
+        var randomNumbers = RandomCollection.generateRandomNaturalNumbers(count, UPPER_LIMIT); // [1, 10>
+        Console.WriteLine(RandomCollection.numbersToString(randomNumbers));
+        randomNumbers.Sort();
+        Console.WriteLine(RandomCollection.numbersToString(randomNumbers));
+    }
+
+    public static void StringInitialization()
+    {
+        // Absence of a value
+        string? test1 = null;
+        string? test2 = default; // same thing as = null
+        
+        // A starter value
+        string? test3 = string.Empty;
+        string? test4 = ""; // this empty string is a constant
+        
+    }
+    
+    public static void Lv2Task1()
+    {
+        var roller = new DiceRoller();
+        for (int i = 0; i < 20; i++)
+        {
+            roller.InsertDie(new Die(6));
+        }
+        roller.RollAllDice();
+        var results = roller.GetRollingResults();
+        for (int i = 0; i < roller.DiceCount(); i++)
+        {
+            Console.WriteLine(i + 1 + ". die rolled: " + results[i]);
+        }
     }
 }
