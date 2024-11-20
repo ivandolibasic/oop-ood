@@ -6,11 +6,15 @@ using oop.lv2;
 using oop.lv3.zd1;
 using oop.lv3.zd2;
 using oop.lv3.zd3;
+using oop.lv4.zd1;
+using oop.lv4.zd2;
+using oop.lv4.zd3;
 using Sword = oop.lv3.zd3.Sword;
 using oop.pr;
 using oop.pr.ex;
 using Character = oop.pr.ex.Character;
 using Die = oop_design.rppoon.lv2.Die;
+using Shape = oop.lv4.zd2.Shape;
 
 namespace oop;
 
@@ -358,5 +362,91 @@ public static class Test
         {
             Console.WriteLine(i + 1 + ". die rolled: " + results[i]);
         }
+    }
+
+    public static void LinqPlayground()
+    {
+        List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        // var eventNumbers = numbers.Where(x => x % 2 == 0).ToList();
+        // var eventNumbers = from num in numbers 
+        //                                     where num % 2 == 0
+        //                                         select num;
+        var eventNumbers = numbers.Where(num => num % 2 != 0);
+        foreach (var num in eventNumbers)
+            Console.WriteLine(num);
+    }
+
+    public static void RunWordScoreCalculator()
+    {
+        var calculator = new  WordScoreCalculator(2, 3);
+        var calculatorPerCharacter = new WordScoreCalculatorPerChar(2, 3, 2, 1);
+        Console.WriteLine("Enter three words to calculate the score:");
+        // string[] input = Console.ReadLine().Split(' ');
+        var words = new List<string>();
+        string input;
+        for (int i = 1; i <= 3; i++)
+        {
+            do
+            {
+                Console.Write($"Enter word {i}: ");
+                input = Console.ReadLine();
+            }
+            while (input.Length < 3);
+            words.Add(input);
+        }
+        foreach (var word in words)
+        {
+            Console.WriteLine("Base class calculation: " + calculator.CalculateScore(word));
+            Console.WriteLine("Derived class calculation: " + calculatorPerCharacter.CalculateScore(word));
+        }
+    }
+
+    public static void RunShape()
+    {
+        Shape[] shapes = new Shape[]
+        {
+            new Ellipse(semiMajorAxis: 4.3, semiMinorAxis: 5.7),
+            new Ellipse(3.9, 8.4),
+            new Triangle(side: 2.1),
+            new Triangle(6.4)
+        };
+        foreach (var shape in shapes)
+        {
+            Console.WriteLine(shape.ToString());
+        }
+    }
+
+    public static void RunTaximeter()
+    {
+        Random generator = new Random();
+        double[] journeys = new double[generator.Next(1, 11)];
+        for (int i = 0; i < journeys.Length; i++)
+        {
+            journeys[i] = generator.NextDouble() * 10;
+        }
+        var standardTaxi = new StandardTaximeter(1m, 2.3m);
+        var fixedTaxi = new FixedTaximeter(5m, 3, 2.3m);
+        decimal maxStandardPrice = 0;
+        decimal maxFixedPrice = 0;
+        int maxStandardPriceIndex = -1;
+        int maxFixedPriceIndex = -1;
+        for (int i = 0; i < journeys.Length; i++)
+        {
+            decimal standardPrice = standardTaxi.CalculatePrice(journeys[i]);
+            decimal fixedPrice = fixedTaxi.CalculatePrice(journeys[i]);
+            if (standardPrice > maxStandardPrice)
+            {
+                maxStandardPrice = standardPrice;
+                maxStandardPriceIndex = i;
+            }
+            if (fixedPrice > maxFixedPrice)
+            {
+                maxFixedPrice = fixedPrice;
+                maxFixedPriceIndex = i;
+            }
+        }
+        Console.WriteLine($"Number of journeys: {journeys.Length}");
+        Console.WriteLine($"Maximum standard price for journey no.{maxStandardPriceIndex + 1} amounts {maxStandardPrice:F2} euros.");
+        Console.WriteLine($"Maximum fixed price for journey no.{maxFixedPriceIndex + 1} amounts {maxFixedPrice:F2} euros.");
     }
 }

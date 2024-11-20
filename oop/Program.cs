@@ -18,3 +18,7 @@ Console.Write(""); // Why this? Program 'oop.dll' does not contain a static 'Mai
 // Test.RunShoppingSystemTask();
 // Test.RunRobotTask();
 // Test.RunItemTask();
+// Test.LinqPlayground();
+// Test.RunWordScoreCalculator();
+// Test.RunShape();
+Test.RunTaximeter();
