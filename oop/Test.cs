@@ -9,6 +9,9 @@ using oop.lv3.zd3;
 using oop.lv4.zd1;
 using oop.lv4.zd2;
 using oop.lv4.zd3;
+using oop.lv5.zd1;
+using oop.lv5.zd2;
+using oop.lv5.zd3;
 using Sword = oop.lv3.zd3.Sword;
 using oop.pr;
 using oop.pr.ex;
@@ -378,8 +381,8 @@ public static class Test
 
     public static void RunWordScoreCalculator()
     {
-        var calculator = new  WordScoreCalculator(2, 3);
-        var calculatorPerCharacter = new WordScoreCalculatorPerChar(2, 3, 2, 1);
+        WordScoreCalculator calculator = new  WordScoreCalculator(2, 3);
+        WordScoreCalculator calculatorPerCharacter = new WordScoreCalculatorPerChar(2, 3, 2, 1);
         Console.WriteLine("Enter three words to calculate the score:");
         // string[] input = Console.ReadLine().Split(' ');
         var words = new List<string>();
@@ -448,5 +451,75 @@ public static class Test
         Console.WriteLine($"Number of journeys: {journeys.Length}");
         Console.WriteLine($"Maximum standard price for journey no.{maxStandardPriceIndex + 1} amounts {maxStandardPrice:F2} euros.");
         Console.WriteLine($"Maximum fixed price for journey no.{maxFixedPriceIndex + 1} amounts {maxFixedPrice:F2} euros.");
+    }
+
+    public static void ArrayUtilsTestInterface()
+    {
+        int[] days = [11, 12, 13, 14];
+        Console.WriteLine(String.Join("\t", days));
+        ArrayUtilities.Reverse(days);
+        Console.WriteLine(String.Join("\t", days));
+        int largestDayPosition = ArrayUtilities.FindLargestIndex(days);
+        Console.WriteLine(days[largestDayPosition]);
+
+        double[] temperatures = [24.12, 17.6, 7.46, 10.8, 11.3];
+        Console.WriteLine(String.Join("\t", temperatures));
+        ArrayUtilities.Reverse<double>(temperatures);
+        Console.WriteLine(String.Join("\t", temperatures));
+    }
+
+    public static void RunFilter()
+    {
+        Random generator = new Random();
+        List<int> randomNumbers = new List<int>();
+        for (int i = 0; i < 100; i++)
+            randomNumbers.Add(generator.Next(1, 1001));
+        Console.WriteLine("Random numbers:");
+        Console.WriteLine(string.Join(", ", randomNumbers));
+        IFilter perfectFilter = new PerfectFilter();
+        List<int> perfectNumbers = FilterHelper.ApplyFilter(randomNumbers, perfectFilter);
+        Console.WriteLine("Perfect numbers:");
+        Console.WriteLine(string.Join(", ", perfectNumbers));
+        // https://testbook.com/maths/perfect-numbers
+        IFilter fibonacciFilter = new FibonacciFilter();
+        List<int> fibbonacciNumbers = FilterHelper.ApplyFilter(randomNumbers, fibonacciFilter);
+        Console.WriteLine("Fibonacci numbers:");
+        Console.WriteLine(string.Join(", ", fibbonacciNumbers));
+        // https://r-knott.surrey.ac.uk/fibonacci/fibtable.html
+    }
+
+    public static void RunWeatherForecast()
+    {
+        Console.WriteLine("Define a weather forecast scope:");
+        int forecastScope = Convert.ToInt32(Console.ReadLine());
+        WeatherForecast[] forecast = new WeatherForecast[forecastScope];
+        for (int i = 0; i < forecast.Length; i++)
+        {
+            Console.WriteLine("Enter a daily temperature:");
+            double dailyTemperature = double.Parse(Console.ReadLine());
+            string dailySummary = "Cold";
+            if (dailyTemperature > 10)
+                dailySummary = "Hot";
+            forecast[i] = new WeatherForecast(dailyTemperature, dailySummary);
+        }
+        foreach (WeatherForecast dailyWeather in forecast)
+            Console.WriteLine(dailyWeather.ToString());
+        Console.WriteLine($"Number of temperature spikes: {Utilities.CountSpikes(forecast)}");
+    }
+
+    public static void RunSanta()
+    {
+        Kid[] kids = new Kid[]
+        {
+            new(3, 3, false),
+            new(1, 5, true),
+            new(4, 3, true)
+        };
+        INaughty epidemiologyChecker = new EpidemiologyChecker();
+        SantasHelper santa = new SantasHelper(1, 2, epidemiologyChecker);
+        Console.WriteLine($"Santa ready: {santa.IsSantaReadyForVisit(kids)}");
+        INaughty holidayChecker = new HolidayChecker();
+        santa.injectBehaviour(holidayChecker);
+        Console.WriteLine($"Santa ready: {santa.IsSantaReadyForVisit(kids)}");
     }
 }
