@@ -7,9 +7,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="snippets\rppoon\lv2\" />
-      <Folder Include="snippets\rppoon\srp\" />
-    </ItemGroup>
-
 </Project>

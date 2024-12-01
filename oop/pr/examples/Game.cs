@@ -1,4 +1,4 @@
-namespace oop.pr.ex;
+namespace oop.pr.examples;
 
 public class Game
 {

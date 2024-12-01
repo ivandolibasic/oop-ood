@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\idoli\\Documents\\oop-training\\oop\\oop.csproj": {}
+    "C:\\Users\\idoli\\Documents\\oop-ood\\oop\\oop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\idoli\\Documents\\oop-training\\oop\\oop.csproj": {
+    "C:\\Users\\idoli\\Documents\\oop-ood\\oop\\oop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\idoli\\Documents\\oop-training\\oop\\oop.csproj",
+        "projectUniqueName": "C:\\Users\\idoli\\Documents\\oop-ood\\oop\\oop.csproj",
         "projectName": "oop",
-        "projectPath": "C:\\Users\\idoli\\Documents\\oop-training\\oop\\oop.csproj",
+        "projectPath": "C:\\Users\\idoli\\Documents\\oop-ood\\oop\\oop.csproj",
         "packagesPath": "C:\\Users\\idoli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\idoli\\Documents\\oop-training\\oop\\obj\\",
+        "outputPath": "C:\\Users\\idoli\\Documents\\oop-ood\\oop\\obj\\",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [

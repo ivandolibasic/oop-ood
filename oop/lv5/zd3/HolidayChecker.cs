@@ -1,15 +1,13 @@
-using System.Reflection.Metadata;
-
 namespace oop.lv5.zd3;
 
 public class HolidayChecker : INaughty
 {
-    public bool IsNaughty(Kid kid)
+    public bool IsNaughty(Child child)
     {
-        if (kid.SiblingFights > kid.GoodDeeds)
+        if (child.SiblingFightsCount > child.GoodDeedsCount)
             return true;
-        if (kid.SiblingFights == kid.GoodDeeds)
-            return !kid.DoesRegularlyWashHands;
+        if (child.SiblingFightsCount == child.GoodDeedsCount)
+            return !child.IsHandWashingRegular;
         return false;
     }
 }

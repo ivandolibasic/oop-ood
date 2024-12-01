@@ -2,36 +2,34 @@ namespace oop.lv5.zd3;
 
 public class SantasHelper
 {
-    private int switches;
-    private int gifts;
-    private INaughty behaviourChacker;
-
-    public SantasHelper(int switches, int gifts, INaughty behaviourChacker)
+    private int christmasRods;
+    private int presents;
+    private INaughty childBehaviour;
+    
+    public SantasHelper(int christmasRods, int presents, INaughty childBehaviour)
     {
-        this.switches = switches;
-        this.gifts = gifts;
-        this.behaviourChacker = behaviourChacker;
+        this.christmasRods = christmasRods;
+        this.presents = presents;
+        this.childBehaviour = childBehaviour;
     }
     
-    public int Switches { get { return switches; } }
-    public int Gifts { get { return gifts; } }
+    public int ChristmasRods { get => christmasRods; }
+    public int Presents { get => presents; }
+    public INaughty ChildBehaviour { get => childBehaviour; }
+    
+    public void SetBehaviour(INaughty childBehaviour) => this.childBehaviour = childBehaviour;
 
-    public void injectBehaviour(INaughty behaviour)
+    public bool IsReadyForVisit(Child[] children)
     {
-        behaviourChacker = behaviour;
-    }
-
-    public bool IsSantaReadyForVisit(Kid[] kids)
-    {
-        int naughtyKids = 0;
-        int niceKids = 0;
-        foreach (var kid in kids)
+        int naughtyChildren = 0;
+        int niceChildren = 0;
+        foreach (var child in children)
         {
-            if (behaviourChacker.IsNaughty(kid))
-                naughtyKids++;
+            if (childBehaviour.IsNaughty(child))
+                naughtyChildren++;
             else
-                niceKids++;
+                niceChildren++;
         }
-        return gifts >= niceKids && switches >= naughtyKids;
+        return presents >= niceChildren && christmasRods >= naughtyChildren;
     }
 }

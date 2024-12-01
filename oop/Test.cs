@@ -1,23 +1,8 @@
-using oop_design.rppoon.lv2;
-using oop.dotnet_docs;
-using oop.dotnet_docs.class_relationships;
-using oop.lv1;
-using oop.lv2;
-using oop.lv3.zd1;
-using oop.lv3.zd2;
-using oop.lv3.zd3;
-using oop.lv4.zd1;
-using oop.lv4.zd2;
-using oop.lv4.zd3;
-using oop.lv5.zd1;
-using oop.lv5.zd2;
-using oop.lv5.zd3;
-using Sword = oop.lv3.zd3.Sword;
+using oop.msdn_examples;
+using oop.msdn_examples.class_relationships;
 using oop.pr;
-using oop.pr.ex;
-using Character = oop.pr.ex.Character;
-using Die = oop_design.rppoon.lv2.Die;
-using Shape = oop.lv4.zd2.Shape;
+using oop.pr.examples;
+using Character = oop.pr.examples.Character;
 
 namespace oop;
 
@@ -103,122 +88,7 @@ public static class Test
         Console.WriteLine($"Some text {text}"); // interpolation
         Console.WriteLine("Some text {0}", text); // composition (composite formatting)
     }
-
-    public static void RunTrashCanTask()
-    {
-        var can = new TrashCan(100);
-        Console.WriteLine($"Capacity: {can.GetCapacity()}");
-        Console.WriteLine($"Current amount: {can.GetAmount()}");
-        Console.WriteLine("==================================");
-        can.Insert(95);
-        Console.WriteLine("Trash inserted (95).");
-        Console.WriteLine($"Current amount: {can.GetAmount()}");
-        Console.WriteLine($"Is it full: {can.IsFull()}");
-        Console.WriteLine("==================================");
-        can.Insert(10);
-        Console.WriteLine("Trash inserted (10).");
-        Console.WriteLine($"Current amount: {can.GetAmount()}");
-        Console.WriteLine($"Is it full: {can.IsFull()}");
-        Console.WriteLine($"How much is overflowing: {can.GetOverflowAmount()}");
-        Console.WriteLine("==================================");
-        can.Empty();
-        Console.WriteLine("Trash emptied.");
-        Console.WriteLine($"Current amount: {can.GetAmount()}");
-        Console.WriteLine($"Is it full: {can.IsFull()}");
-        Console.WriteLine($"How much is overflowing: {can.GetOverflowAmount()}");
-    }
     
-    public static void RunComplexNumberTask()
-    {
-        Complex number1 = new();
-        Console.WriteLine(number1.ToString());
-        Complex number2 = new Complex(3, -4);
-        Console.WriteLine(number2.ToString());
-        Console.WriteLine(number2.Real);
-        Console.WriteLine(number2.Conjugate());
-        Console.WriteLine(number2.Modulus());
-        Complex number3 = new Complex(2, 5);
-        number2.Add(number3);
-        Console.WriteLine(number2.ToString());
-    }
-    
-    public static void RunWeatherTask()
-    {
-        Weather current = new Weather();
-        current.SetTemperature(24.12);
-        current.SetWindSpeed(3.5);
-        current.SetHumidity(0.56);
-        Console.WriteLine("Weather info:\n"
-        + "\ttemperature: " + current.GetTemperature() + "\n"
-        + "\thumidity: " + current.GetHumidity() + "\n"
-        + "\twind speed: " + current.GetWindSpeed() + "\n");
-        // Console.WriteLine("Feels like: " + current.CalculateFleesLikeTemperature());
-    }
-    
-    public static void RunContactTask()
-    {
-        Console.Write("Define a number of contacts stored in the address book: ");
-        int contactCount = int.Parse(Console.ReadLine());
-        Contact[] contacts = new Contact[contactCount];
-        for (int i = 0; i < contacts.Length; i++)
-        {
-            Console.WriteLine("Enter contact details:");
-            Console.Write("Enter first name: ");
-            string? firstName =  Console.ReadLine();
-            Console.Write("Enter last name: ");
-            string? lastName = Console.ReadLine();
-            Console.Write("Enter phone number: ");
-            string? phoneNumber = Console.ReadLine();
-            Console.Write("Enter email: ");
-            string? email = Console.ReadLine();
-            while (EmailHelper.CheckValidity(email) == false)
-            {
-                Console.Write("Invalid email. Please enter valid email: ");
-                email = Console.ReadLine();
-            }
-            contacts[i] = new Contact(firstName, lastName, phoneNumber, email);
-        }
-        Console.Write("Define a file name: ");
-        string? fileName = Console.ReadLine();
-        using StreamWriter writer = new StreamWriter(fileName);
-        foreach (var contact in contacts)
-        {
-            writer.WriteLine(contact.ToString());
-        }
-    }
-    
-    public static void RunVector3DTask()
-    {
-        var nulVector = new Vector3D();
-        Console.WriteLine(nulVector.ToString());
-        var vector1 = nulVector;
-        vector1.I = 2.7;
-        vector1.J = 7.1;
-        vector1.K = -5.4;
-        Console.WriteLine(vector1.ToString());
-        var vector2 = new Vector3D(0.3, 6.2, 1.2);
-        nulVector = vector1 + vector2;
-        Console.WriteLine(nulVector.ToString());
-        Console.WriteLine(vector2.Modulus());
-        
-        var generator = new Random();
-        Vector3D randomVector = generator.NextVector3D(5, 10);
-        Console.WriteLine(randomVector.ToString());
-    }
-
-    public static void RunDiceTask()
-    {
-        YahtzeeChecker yahtzee = new(5);
-        int numberOfRolls = 0;
-        do
-        {
-            yahtzee.RollAll();
-            yahtzee.PrintRollResult();
-            numberOfRolls++;
-        } while (!yahtzee.IsYahtzee());
-        Console.WriteLine("Yahtzee achieved after {0} rolls.", numberOfRolls);
-    }
-
     public static void RunCharacterTask() // Association
     {
         Character theAshenOne = new("Ashen One", 100);
@@ -269,40 +139,6 @@ public static class Test
         }
         Console.WriteLine(string.Join(",", evenNumbers));
     }
-
-    public static void RunShoppingSystemTask()
-    {
-        var products = new List<Product>();
-        var basket = new Basket(products);
-        basket.Add(new Product(12, "T-Shirt"));
-        basket.Add(new Product(40, "Shoes"));
-        basket.Add(new Product(3, "Socks"));
-        Console.WriteLine($"Total price without discount is: {basket.CalculateTotalPrice()}");
-        var discount = new Discount(10);
-        basket.CalculateTotalPrice(discount);
-    }
-
-    public static void RunRobotTask()
-    {
-        var robot = new Robot(35.7, "Pero");
-        Console.WriteLine($"Robot's energy is: {robot.GetEnergy()}");
-        Console.WriteLine($"Robot will be shut down in {robot.CalculateSecondsToShutDown(2)} seconds");
-        Console.WriteLine($"Robot will be fully charged in {robot.CalculateSecondsToFullCharge(2)} seconds");
-        var lowEnergyRobot = new LowEnergyRobot(55.2, "Rope", 0.5);
-        Console.WriteLine($"Low energy robot's energy is: {lowEnergyRobot.GetEnergy()}");
-        Console.WriteLine($"Low energy robot will be shut down in {lowEnergyRobot.CalculateSecondsToShutDown(2)} seconds");
-        Console.WriteLine($"Low energy robot will be fully charged in {lowEnergyRobot.CalculateSecondsToFullCharge(2)} seconds");
-    }
-
-    public static void RunItemTask()
-    {
-        var items = new List<Item>()
-        {
-            new Sword("Phase Blade", 10, 500, 1000),
-            new Shield("Monarch", 20, 1000, 250)
-        };
-        Console.WriteLine($"Average inventory loot is: {Inventory.GetAverageItemCost(items)}");
-    }
     
     public static void DateAndTime()
     {
@@ -352,107 +188,34 @@ public static class Test
         
     }
     
-    public static void Lv2Task1()
-    {
-        var roller = new DiceRoller();
-        for (int i = 0; i < 20; i++)
-        {
-            roller.InsertDie(new Die(6));
-        }
-        roller.RollAllDice();
-        var results = roller.GetRollingResults();
-        for (int i = 0; i < roller.DiceCount(); i++)
-        {
-            Console.WriteLine(i + 1 + ". die rolled: " + results[i]);
-        }
-    }
-
     public static void LinqPlayground()
     {
-        List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        // var eventNumbers = numbers.Where(x => x % 2 == 0).ToList();
-        // var eventNumbers = from num in numbers 
-        //                                     where num % 2 == 0
-        //                                         select num;
-        var eventNumbers = numbers.Where(num => num % 2 != 0);
-        foreach (var num in eventNumbers)
-            Console.WriteLine(num);
-    }
+        // List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        // // var eventNumbers = numbers.Where(x => x % 2 == 0).ToList();
+        // // var eventNumbers = from num in numbers 
+        // //                                     where num % 2 == 0
+        // //                                         select num;
+        // var eventNumbers = numbers.Where(num => num % 2 != 0);
+        // foreach (var num in eventNumbers)
+        //     Console.WriteLine(num);
 
-    public static void RunWordScoreCalculator()
-    {
-        WordScoreCalculator calculator = new  WordScoreCalculator(2, 3);
-        WordScoreCalculator calculatorPerCharacter = new WordScoreCalculatorPerChar(2, 3, 2, 1);
-        Console.WriteLine("Enter three words to calculate the score:");
-        // string[] input = Console.ReadLine().Split(' ');
-        var words = new List<string>();
-        string input;
-        for (int i = 1; i <= 3; i++)
-        {
-            do
-            {
-                Console.Write($"Enter word {i}: ");
-                input = Console.ReadLine();
-            }
-            while (input.Length < 3);
-            words.Add(input);
-        }
-        foreach (var word in words)
-        {
-            Console.WriteLine("Base class calculation: " + calculator.CalculateScore(word));
-            Console.WriteLine("Derived class calculation: " + calculatorPerCharacter.CalculateScore(word));
-        }
+        // List<int> scores = [3, 45, 82, 97, 92, 100, 81, 60];
+        // IEnumerable<int> scoresLinqMethod = scores.Where(s => s > 80);
+        // foreach (int score in scoresLinqMethod)
+        // {
+        //     Console.Write($"{score}\t");
+        // }
+        
+        // Func<int, int, int> add = (x , y) => x + y;
+        // Console.WriteLine(add(3, 4));
+        
+        // Func<string, string> greet = name => $"Hello, my name is {name}!";
+        // Console.WriteLine(greet("Ivan"));
+        
+        Func<int, int> square = x => x * x;
+        Console.WriteLine(square(5));
     }
-
-    public static void RunShape()
-    {
-        Shape[] shapes = new Shape[]
-        {
-            new Ellipse(semiMajorAxis: 4.3, semiMinorAxis: 5.7),
-            new Ellipse(3.9, 8.4),
-            new Triangle(side: 2.1),
-            new Triangle(6.4)
-        };
-        foreach (var shape in shapes)
-        {
-            Console.WriteLine(shape.ToString());
-        }
-    }
-
-    public static void RunTaximeter()
-    {
-        Random generator = new Random();
-        double[] journeys = new double[generator.Next(1, 11)];
-        for (int i = 0; i < journeys.Length; i++)
-        {
-            journeys[i] = generator.NextDouble() * 10;
-        }
-        var standardTaxi = new StandardTaximeter(1m, 2.3m);
-        var fixedTaxi = new FixedTaximeter(5m, 3, 2.3m);
-        decimal maxStandardPrice = 0;
-        decimal maxFixedPrice = 0;
-        int maxStandardPriceIndex = -1;
-        int maxFixedPriceIndex = -1;
-        for (int i = 0; i < journeys.Length; i++)
-        {
-            decimal standardPrice = standardTaxi.CalculatePrice(journeys[i]);
-            decimal fixedPrice = fixedTaxi.CalculatePrice(journeys[i]);
-            if (standardPrice > maxStandardPrice)
-            {
-                maxStandardPrice = standardPrice;
-                maxStandardPriceIndex = i;
-            }
-            if (fixedPrice > maxFixedPrice)
-            {
-                maxFixedPrice = fixedPrice;
-                maxFixedPriceIndex = i;
-            }
-        }
-        Console.WriteLine($"Number of journeys: {journeys.Length}");
-        Console.WriteLine($"Maximum standard price for journey no.{maxStandardPriceIndex + 1} amounts {maxStandardPrice:F2} euros.");
-        Console.WriteLine($"Maximum fixed price for journey no.{maxFixedPriceIndex + 1} amounts {maxFixedPrice:F2} euros.");
-    }
-
+    
     public static void ArrayUtilsTestInterface()
     {
         int[] days = [11, 12, 13, 14];
@@ -466,60 +229,5 @@ public static class Test
         Console.WriteLine(String.Join("\t", temperatures));
         ArrayUtilities.Reverse<double>(temperatures);
         Console.WriteLine(String.Join("\t", temperatures));
-    }
-
-    public static void RunFilter()
-    {
-        Random generator = new Random();
-        List<int> randomNumbers = new List<int>();
-        for (int i = 0; i < 100; i++)
-            randomNumbers.Add(generator.Next(1, 1001));
-        Console.WriteLine("Random numbers:");
-        Console.WriteLine(string.Join(", ", randomNumbers));
-        IFilter perfectFilter = new PerfectFilter();
-        List<int> perfectNumbers = FilterHelper.ApplyFilter(randomNumbers, perfectFilter);
-        Console.WriteLine("Perfect numbers:");
-        Console.WriteLine(string.Join(", ", perfectNumbers));
-        // https://testbook.com/maths/perfect-numbers
-        IFilter fibonacciFilter = new FibonacciFilter();
-        List<int> fibbonacciNumbers = FilterHelper.ApplyFilter(randomNumbers, fibonacciFilter);
-        Console.WriteLine("Fibonacci numbers:");
-        Console.WriteLine(string.Join(", ", fibbonacciNumbers));
-        // https://r-knott.surrey.ac.uk/fibonacci/fibtable.html
-    }
-
-    public static void RunWeatherForecast()
-    {
-        Console.WriteLine("Define a weather forecast scope:");
-        int forecastScope = Convert.ToInt32(Console.ReadLine());
-        WeatherForecast[] forecast = new WeatherForecast[forecastScope];
-        for (int i = 0; i < forecast.Length; i++)
-        {
-            Console.WriteLine("Enter a daily temperature:");
-            double dailyTemperature = double.Parse(Console.ReadLine());
-            string dailySummary = "Cold";
-            if (dailyTemperature > 10)
-                dailySummary = "Hot";
-            forecast[i] = new WeatherForecast(dailyTemperature, dailySummary);
-        }
-        foreach (WeatherForecast dailyWeather in forecast)
-            Console.WriteLine(dailyWeather.ToString());
-        Console.WriteLine($"Number of temperature spikes: {Utilities.CountSpikes(forecast)}");
-    }
-
-    public static void RunSanta()
-    {
-        Kid[] kids = new Kid[]
-        {
-            new(3, 3, false),
-            new(1, 5, true),
-            new(4, 3, true)
-        };
-        INaughty epidemiologyChecker = new EpidemiologyChecker();
-        SantasHelper santa = new SantasHelper(1, 2, epidemiologyChecker);
-        Console.WriteLine($"Santa ready: {santa.IsSantaReadyForVisit(kids)}");
-        INaughty holidayChecker = new HolidayChecker();
-        santa.injectBehaviour(holidayChecker);
-        Console.WriteLine($"Santa ready: {santa.IsSantaReadyForVisit(kids)}");
     }
 }

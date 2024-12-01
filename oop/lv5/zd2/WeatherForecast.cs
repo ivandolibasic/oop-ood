@@ -3,21 +3,22 @@ namespace oop.lv5.zd2;
 public class WeatherForecast : IComparable<WeatherForecast>
 {
     private double temperature;
-    private string summary;
-    
-    public WeatherForecast(double temperature, string summary)
+    private string description;
+
+    public WeatherForecast(double temperature)
     {
         this.temperature = temperature;
-        this.summary = summary;
+        description = "Hot";
+        if (this.temperature < 0)
+            description = "Cold";
+        else if (this.temperature >= 0 && this.temperature <= 10)
+            description = "Mild";
     }
     
-    public double Temperature { get { return temperature; } }
-    public string Summary { get { return summary; } }
-    
-    public override string ToString() { return $"Temperature in °C: {temperature:F2}, Summary: {summary}"; }
-    
-    public int CompareTo(WeatherForecast other)
-    {
-        return Temperature.CompareTo(other.Temperature);
-    }
+    public double Temperature => temperature;
+    public string Description => description;
+
+    public override string ToString() => $"Temperature: {temperature:F2} °C, {description}";
+
+    public int CompareTo(WeatherForecast other) => temperature.CompareTo(other.temperature);
 }
